@@ -11,7 +11,9 @@ import tk.mybatis.spring.annotation.MapperScan;
  */
 @SpringBootApplication
 @MapperScan(basePackages = {"com.imooc.mapper"})
-@EnableTransactionManagement
+//@EnableTransactionManagement
+//扫描所有包，以及相关工具包
+@ComponentScan(basePackages = {"com.imooc", "org.n3r.idworker"})
 public class SpringbootApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringbootApplication.class,args);
