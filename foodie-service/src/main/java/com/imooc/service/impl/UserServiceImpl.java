@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
      */
     @Transactional(propagation = Propagation.SUPPORTS,rollbackFor = Exception.class)
     @Override
-    public boolean queryUsernameIsExists(String username) {
+    public boolean queryUsernameIsExist(String username) {
         Example example = new Example(Users.class);
         Example.Criteria userCriteria = example.createCriteria();
         userCriteria.andLike("username",username);
@@ -73,4 +73,22 @@ public class UserServiceImpl implements UserService {
         usersMapper.insert(users);
         return users;
     }
+
+    /**
+     * @Description 用户登录
+     * @param username
+     * @param password
+     * @return
+     */
+    @Override
+    public Users queryUsersForLogin(String username, String password) {
+        Example example = new Example(Users.class);
+        Example.Criteria  criteria = example.createCriteria();
+        criteria.andEqualTo("username",username);
+        criteria.andEqualTo("password",password);
+        Users user =usersMapper.selectOneByExample(example);
+        return user;
+    }
+
+
 }

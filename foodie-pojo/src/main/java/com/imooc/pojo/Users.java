@@ -1,5 +1,7 @@
 package com.imooc.pojo;
 
+import io.swagger.annotations.ApiModel;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.util.Date;
